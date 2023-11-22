@@ -53,14 +53,14 @@ class FaceDetector():
                 bbox = int(bboxC.xmin * iw), int(bboxC.ymin * ih), \
                        int(bboxC.width * iw), int(bboxC.height * ih)
                 bboxs.append([id, bbox, detection.score])
-                img = self.fancyDraw(img,bbox)
+                img = self.Draw(img,bbox)
 
                 cv2.putText(img, f'{int(detection.score[0] * 100)}%',
                     (bbox[0], bbox[1] - 20), cv2.FONT_HERSHEY_PLAIN,
                         2, (255, 0, 255), 2)
         return img, bboxs
 
-    def fancyDraw(self, img, bbox, l=30, t=5, rt= 1):
+    def Draw(self, img, bbox, l=30, t=5, rt= 1):
         x, y, w, h = bbox
         x1, y1 = x + w, y + h
 
